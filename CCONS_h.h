@@ -2,8 +2,8 @@
 #ifndef CCONS_h
 #define CCONS_h
 
-#define S_MENU						"Main menu"
-#define S_MAIN						"main"
+#define S_MENU						  "Main menu"
+#define S_MAIN						  "main"
 #define S_DELETE_ALL				"Deleting :"
 #define S_CREATE_N					"Create"
 #define S_CREATE_C					"new"
@@ -76,14 +76,14 @@
 #define S_OPEN_BRACKET				"  ("
 #define S_CLOSED_BRACKET			")  "
 #define S_BACK						"back"
-#define S_REC_1						"(‘"
-#define S_REC_2						"’,"
-#define S_REC_3						"‘"
-#define S_REC_4						"’;"
+#define S_REC_1						"(â€˜"
+#define S_REC_2						"â€™,"
+#define S_REC_3						"â€˜"
+#define S_REC_4						"â€™;"
 #define S_REC_5						","
 #define S_REC_6						")"
-#define S_REC_7						"[‘"
-#define S_REC_8						"’,‘"
+#define S_REC_7						"[â€˜"
+#define S_REC_8						"â€™,â€˜"
 #define S_REC_9						"Pick a number from "
 #define S_REC_10					" to "
 #define S_ARROW						"->"
@@ -105,8 +105,8 @@
 #define S_CSAVELOAD_ERROR_5			"   Expected: ','"
 #define S_CSAVELOAD_ERROR_6			"   Expected: '('"
 #define S_CSAVELOAD_ERROR_7			"   Expected: ']'"
-#define S_CSAVELOAD_ERROR_8			"   Expected: '’'"
-#define S_CSAVELOAD_ERROR_9			"   Expected: '‘'"
+#define S_CSAVELOAD_ERROR_8			"   Expected: 'â€™'"
+#define S_CSAVELOAD_ERROR_9			"   Expected: 'â€˜'"
 #define S_CSAVELOAD_ERROR_10		"   Expected: ',' or ')'"
 #define S_PART  "------------------------------------------------------------------------------------------------------------------------"
 #define S_DOT  ". "
@@ -116,8 +116,8 @@
 #define C_CSAVELOAD_CORRECT_PALE_LEFT_CLOSE '['
 #define C_CSAVELOAD_CORRECT_COMMA ','
 #define C_CSAVELOAD_CORRECT_SEMICOLON ';'
-#define C_CSAVELOAD_CORRECT_APOSTROPHE_RIGHT '’'
-#define C_CSAVELOAD_CORRECT_APOSTROPHE_LEFT '‘'
+#define C_CSAVELOAD_CORRECT_APOSTROPHE_RIGHT 'â€™'
+#define C_CSAVELOAD_CORRECT_APOSTROPHE_LEFT 'â€˜'
 #define C_NEWLINE '\n'
 #define C_SPACE ' '
 #endif // !CCONS_h
