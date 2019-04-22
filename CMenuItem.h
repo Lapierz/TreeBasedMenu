@@ -19,7 +19,7 @@ public:
 	virtual string sGetName() = 0;
 	virtual string sGetText() = 0;
 	virtual CMenuItem* mGetParrent() = 0;
-	virtual bool  sSearch(string sCommand, vector <string> *v_string,string droga) = 0;
+	virtual bool  sSearch(string sCommand, vector <string> *v_string,string sPath) = 0;
 	virtual string vSave(string s_acc)=0;
 };
 #endif 

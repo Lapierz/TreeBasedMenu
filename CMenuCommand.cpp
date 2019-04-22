@@ -34,9 +34,9 @@ string CMenuCommand::sGetText() {
 CMenuItem *CMenuCommand::mGetParrent() {
 	return nullptr;
 }
-bool CMenuCommand::sSearch(string sCommand, vector <string> *v_string, string droga) {
+bool CMenuCommand::sSearch(string sCommand, vector <string> *v_string, string sPath) {
 	if (sGetCommand() == sCommand) {
-		v_string->push_back(droga+sCommand);
+		v_string->push_back(sPath +sCommand);
 		v_string->push_back(sGetText());
 		return true;
 	}
@@ -50,11 +50,10 @@ string CMenuCommand::vSave(string s_acc) {
 string CMenuCommand::sRun() {
 	if (!ccpi_command) {
 		cout << S_EMPTY_COMMAND << endl;
-		return S_EMPTY_STRING;
 	}
 	else {
 		ccpi_command->vRunCommand();
-		return S_EMPTY_STRING;
 	}
+	return S_EMPTY_STRING;
 }
 

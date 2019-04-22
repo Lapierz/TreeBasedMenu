@@ -19,6 +19,7 @@ int CMenuTabCommand::iUserInput(int iLeft, int iRight) {
 	cin >> i_input;
 	cout << endl;
 	if (cin && iLeft <= i_input && i_input <= iRight) {
+		cin.ignore();
 		return i_input;
 	}
 	else {

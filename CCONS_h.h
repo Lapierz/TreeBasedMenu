@@ -2,8 +2,8 @@
 #ifndef CCONS_h
 #define CCONS_h
 
-#define S_MENU						  "Main menu"
-#define S_MAIN						  "main"
+#define S_MENU						"Main menu"
+#define S_MAIN						"main"
 #define S_DELETE_ALL				"Deleting :"
 #define S_CREATE_N					"Create"
 #define S_CREATE_C					"new"
@@ -52,17 +52,17 @@
 #define S_EMPTY_COMMAND				"Empty command"
 #define S_DEF_COMMAND				"defCom"
 #define S_DEF_NAME					"Default command"
-#define S_WHAT_TAB_INPUT			"Chose array number: (-1 -> help)"
+#define S_WHAT_TAB_INPUT			"Chose array number: "
 #define S_EMPTY_TAB					"There are no arrays !!!"
 #define S_ENTER_LEN_INPUT			"Enter length: "
 #define S_WHAT_NAME					"Enter name: "
 #define S_WHAT_VAL					"Enter value: "
-#define S_WHAT_CELL					"Which possiton ? :(-1 -> help)"
+#define S_WHAT_CELL					"Which possiton ? : "
 #define S_RANGE						"Possiton range: 0 - "
 #define S_DEL_SUCC					"Deleting was successful"
-#define S_DEF_TAB					"Default array (single) enter 1 "
-#define S_CUSTOM_TAB				"Custom array enter 2"
-#define S_DEF_TAB_MUL				"Default array (multiple) enter 3 "
+#define S_DEF_TAB					"Default array (single)		enter: 1"
+#define S_CUSTOM_TAB				"Custom array			enter: 2"
+#define S_DEF_TAB_MUL				"Default array (multiple)	enter: 3"
 #define S_HOW_MANY					"How many do you want to create ?:"
 #define S_WRONG_COMM				"There is no such command. Try again:)"
 #define S_ERROR						"Error that shouldn't happen"
@@ -72,18 +72,19 @@
 #define S_CSAVELOAD_BAD_STRING		"Invlaid string!"
 #define S_CSAVELOAD_INTERFACE_BACK	"back"
 #define S_CSAVELOAD_INDEX			"index: "
+#define S_NO_MENU_COMM				"There is no such menu/command"
 #define S_COLON						":  "
 #define S_OPEN_BRACKET				"  ("
 #define S_CLOSED_BRACKET			")  "
 #define S_BACK						"back"
-#define S_REC_1						"(â€˜"
-#define S_REC_2						"â€™,"
-#define S_REC_3						"â€˜"
-#define S_REC_4						"â€™;"
+#define S_REC_1						"(‘"
+#define S_REC_2						"’,"
+#define S_REC_3						"‘"
+#define S_REC_4						"’;"
 #define S_REC_5						","
 #define S_REC_6						")"
-#define S_REC_7						"[â€˜"
-#define S_REC_8						"â€™,â€˜"
+#define S_REC_7						"[‘"
+#define S_REC_8						"’,‘"
 #define S_REC_9						"Pick a number from "
 #define S_REC_10					" to "
 #define S_ARROW						"->"
@@ -105,8 +106,8 @@
 #define S_CSAVELOAD_ERROR_5			"   Expected: ','"
 #define S_CSAVELOAD_ERROR_6			"   Expected: '('"
 #define S_CSAVELOAD_ERROR_7			"   Expected: ']'"
-#define S_CSAVELOAD_ERROR_8			"   Expected: 'â€™'"
-#define S_CSAVELOAD_ERROR_9			"   Expected: 'â€˜'"
+#define S_CSAVELOAD_ERROR_8			"   Expected: '’'"
+#define S_CSAVELOAD_ERROR_9			"   Expected: '‘'"
 #define S_CSAVELOAD_ERROR_10		"   Expected: ',' or ')'"
 #define S_PART  "------------------------------------------------------------------------------------------------------------------------"
 #define S_DOT  ". "
@@ -116,8 +117,8 @@
 #define C_CSAVELOAD_CORRECT_PALE_LEFT_CLOSE '['
 #define C_CSAVELOAD_CORRECT_COMMA ','
 #define C_CSAVELOAD_CORRECT_SEMICOLON ';'
-#define C_CSAVELOAD_CORRECT_APOSTROPHE_RIGHT 'â€™'
-#define C_CSAVELOAD_CORRECT_APOSTROPHE_LEFT 'â€˜'
+#define C_CSAVELOAD_CORRECT_APOSTROPHE_RIGHT '’'
+#define C_CSAVELOAD_CORRECT_APOSTROPHE_LEFT '‘'
 #define C_NEWLINE '\n'
 #define C_SPACE ' '
 #endif // !CCONS_h

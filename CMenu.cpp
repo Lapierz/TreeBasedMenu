@@ -97,14 +97,6 @@ void CMenu::vDeleteAll() {
 	}
 }
 
-string CMenu::sGetCommand() {
-	return s_command;
-} 
-
-string CMenu::sGetName() {
-	return s_name;
-}
-
 void CMenu::vPrint(bool bBol) {
 	if (bBol) {
 		cout << S_PART;
@@ -122,10 +114,6 @@ void CMenu::vPrint(bool bBol) {
 	cout << S_ENTER_COMM;
 }
 
-string CMenu::sGetText() {
-	return s_display_text;
-}
-
 void CMenu::split(const string& s_string, char c_char, vector<string>& v_vec) {
 	string::size_type i = 0;
 	string::size_type j = s_string.find(c_char);
@@ -137,10 +125,6 @@ void CMenu::split(const string& s_string, char c_char, vector<string>& v_vec) {
 			v_vec.push_back(s_string.substr(i, s_string.length()));
 		}
 	}
-}
-
-CMenuItem* CMenu::mGetParrent() {
-	return this->parrent;
 }
 
 string CMenu::vSave(string s_acc) {
@@ -157,92 +141,117 @@ string CMenu::vSave(string s_acc) {
 	return s_acc + s_localacc + S_REC_6;
 }
 
-bool  CMenu::sSearch(string sCommand,vector <string> *v_string,string s_path) { //searches  for path
+bool  CMenu::sSearch(string sCommand,vector <string> *v_string,string sPath) { //searches  for path
 	bool bol = false;
 	if (sGetCommand() == sCommand) {
-		v_string->push_back(s_path+sGetCommand());
+		v_string->push_back(sPath +sGetCommand());
 		v_string->push_back(this->sGetText());
 		return true;
 	}
 	for (int i = 0; i < v_piitems.size(); i++) {
-		if (v_piitems.at(i)->sSearch(sCommand, v_string, s_path + sGetName() + S_ARROW)) {
+		if (v_piitems.at(i)->sSearch(sCommand, v_string, sPath + sGetName() + S_ARROW)) {
 			bol = true;
 		}
 	}
 	return bol;
 }
 
+// parsing load
+// option in main to chose loading from file or standard
+// changing const names
 
-
-//fix Run
 string CMenu::sRun() {
 	string s_string;
-	bool b_com = false ;
 	vector<string> v_string;
 
 	vPrint(true);
-	getline(cin, s_string);
-	
-	if (s_string == S_EXIT) {
-		return  S_EXIT;
 
-	}
-	else {
-		b_com = false;
-		while (s_string != S_BACK) {	
-			bool b_f = false;
-			for (int i = 0; i < (int)v_piitems.size(); i++) {
-				if (s_string == v_piitems.at(i)->sGetCommand()) {      //searching for command with name entered from keyboard
-					b_com = true;
-					string s_string_return = v_piitems.at(i)->sRun();
-					if (s_string_return == S_EXIT) {
-						return  S_EXIT;
-					}
-					vPrint(false);
-					b_f = true;
+	while (true){
+		bool b_com = false;
+		
+		getline(cin, s_string);
+
+		if (s_string == S_EXIT) {
+			return  S_EXIT;
+		}
+		
+		if (s_string == S_BACK) {
+			return S_EMPTY_STRING;
+		}
+
+		for (int i = 0; i < (int)v_piitems.size() && !b_com; i++) {
+			if (s_string == v_piitems.at(i)->sGetCommand()) {      //searching for command with name entered from keyboard
+				string s_string_return = v_piitems.at(i)->sRun();
+				if (s_string_return == S_EXIT) {
+					return  S_EXIT;
 				}
-			}
-			b_com = b_f;
-			if(!b_com) {
-				split(s_string+ C_SPACE, C_SPACE, v_string);
-				if (s_string != v_string.at(0)) {
-					if (v_string.at(0) == S_SEARCH) { //search command
-						CMenuItem* parent = this;
-						b_com = true;
-						while (parent->mGetParrent()!=nullptr) {
-							parent = parent->mGetParrent();
-						}
-						vector <string> v_vec;
-						vector <string>* v_pi = &v_vec;
-						bool done = false;
-						done =parent->sSearch(v_string.at(1),v_pi,S_EMPTY_STRING);
-						if (done) {
-							cout << endl << v_vec.at(0) << endl << v_vec.at(1) << endl << endl;	
-						}
-						v_pi->clear();
-						v_pi = nullptr;
-						delete v_pi;
-						
-					}
-					if (v_string.at(0) == S_HELP) { //help command
-						for (int i = 0; i < v_piitems.size(); i++) {
-							if (v_piitems.at(i)->sGetCommand() == v_string.at(1)) {
-								cout << v_piitems.at(i)->sGetText() << endl<<endl;
-							}
-						}
-						b_com = true;
-					}
-				}
-				v_string.clear();
-			}
-			getline(cin, s_string);
-			if (s_string == S_EXIT) {
-				return S_EXIT;
-			}
-			if (!b_com) {
-				cout << S_WRONG_COMM << endl << endl;;
+				vPrint(false);
+				b_com = true;
 			}
 		}
-		return S_EMPTY_STRING;
+
+		if(!b_com) {
+			split(s_string+ C_SPACE, C_SPACE, v_string);
+			bool done = false;
+			if (s_string != v_string.at(0)) {
+				if (v_string.at(0) == S_SEARCH) { //search command
+		
+					CMenuItem* parent = this;
+					vector <string> v_vec;
+						
+					while (parent->mGetParrent()!=nullptr) {
+						parent = parent->mGetParrent();
+					}
+						
+					done = parent->sSearch(v_string.at(1), &v_vec, S_EMPTY_STRING);
+						
+					if (done) {
+						cout << endl << v_vec.at(0) << endl << v_vec.at(1) << endl << endl;	
+						cout << S_ENTER_COMM;
+					}
+					else {
+						cout << endl << S_NO_MENU_COMM << endl << endl;
+						cout << S_ENTER_COMM;
+					}
+					b_com = true;
+				}
+
+				if (v_string.at(0) == S_HELP) { //help command
+					for (int i = 0; i < v_piitems.size() && !done; i++) {
+						if (v_piitems.at(i)->sGetCommand() == v_string.at(1)) {
+							cout << v_piitems.at(i)->sGetText() << endl << endl;
+							cout << S_ENTER_COMM;
+							done = true;
+						}
+					}
+					if (!done) {
+						cout << endl << S_NO_MENU_COMM << endl << endl;
+						cout << S_ENTER_COMM;
+					}
+					b_com = true;
+				}
+			}
+			v_string.clear();
+		}
+		if (!b_com) {
+			cout << S_WRONG_COMM << endl << endl;;
+			cout << S_ENTER_COMM;
+		}
 	}
+}
+
+CMenuItem* CMenu::mGetParrent() {
+	return this->parrent;
+}
+
+string CMenu::sGetText() {
+	return s_display_text;
+}
+
+string CMenu::sGetCommand() {
+	return s_command;
+}
+
+string CMenu::sGetName() {
+	return s_name;
 }
